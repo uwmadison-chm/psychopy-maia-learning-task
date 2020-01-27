@@ -23,7 +23,7 @@
     <Param name="Use version" updates="None" val="" valType="str"/>
     <Param name="Window size (pixels)" updates="None" val="[3840, 2160]" valType="code"/>
     <Param name="blendMode" updates="None" val="avg" valType="str"/>
-    <Param name="color" updates="None" val="$[0,0,0]" valType="str"/>
+    <Param name="color" updates="None" val="$[-1,-1,-1]" valType="str"/>
     <Param name="colorSpace" updates="None" val="rgb" valType="str"/>
     <Param name="expName" updates="None" val="maia-reinforcement-learning" valType="str"/>
     <Param name="exportHTML" updates="None" val="on Sync" valType="str"/>
@@ -39,11 +39,11 @@
         <Param name="flip" updates="constant" val="" valType="str"/>
         <Param name="font" updates="constant" val="Arial" valType="str"/>
         <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
-        <Param name="letterHeight" updates="constant" val="0.1" valType="code"/>
+        <Param name="letterHeight" updates="constant" val="0.05" valType="code"/>
         <Param name="name" updates="None" val="text" valType="code"/>
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
-        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
+        <Param name="pos" updates="constant" val="(0, -0.5)" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
@@ -51,7 +51,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="Instructions&amp;#10;&amp;#10;Go here!" valType="str"/>
+        <Param name="text" updates="constant" val="Instructions" valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
       </TextComponent>
@@ -100,7 +100,58 @@
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
       </TextComponent>
     </Routine>
-    <Routine name="stimuli"/>
+    <Routine name="stimuli">
+      <ImageComponent name="left">
+        <Param name="color" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="flipHoriz" updates="constant" val="False" valType="bool"/>
+        <Param name="flipVert" updates="constant" val="False" valType="bool"/>
+        <Param name="image" updates="set every repeat" val="$stim_left_name" valType="str"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="mask" updates="constant" val="None" valType="str"/>
+        <Param name="name" updates="None" val="left" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="pos" updates="constant" val="(-0.4, 0)" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="size" updates="constant" val="(0.5, 0.5)" valType="code"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="4.0" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="texture resolution" updates="constant" val="128" valType="code"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+      </ImageComponent>
+      <ImageComponent name="right">
+        <Param name="color" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="flipHoriz" updates="constant" val="False" valType="bool"/>
+        <Param name="flipVert" updates="constant" val="False" valType="bool"/>
+        <Param name="image" updates="set every repeat" val="$stim_right_name" valType="str"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="mask" updates="constant" val="None" valType="str"/>
+        <Param name="name" updates="None" val="right" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="pos" updates="constant" val="(0.4, 0)" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="size" updates="constant" val="(0.5, 0.5)" valType="code"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="4" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="texture resolution" updates="constant" val="128" valType="code"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+      </ImageComponent>
+    </Routine>
     <Routine name="fixation">
       <PolygonComponent name="iti">
         <Param name="disabled" updates="None" val="False" valType="bool"/>
@@ -118,7 +169,7 @@
         <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="shape" updates="constant" val="cross" valType="str"/>
-        <Param name="size" updates="constant" val="(0.5, 0.5)" valType="code"/>
+        <Param name="size" updates="constant" val="(0.05, 0.05)" valType="code"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -159,12 +210,12 @@
     <Routine name="instr"/>
     <LoopInitiator loopType="TrialHandler" name="trials">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
-      <Param name="conditions" updates="None" val="None" valType="str"/>
-      <Param name="conditionsFile" updates="None" val="" valType="str"/>
+      <Param name="conditions" updates="None" val="[OrderedDict([('kind', 0), ('position', 0), ('result', 1), ('stim_left', 6), ('stim_right', 8), ('stim_left_name', 'stimuli/tunga_06.bmp'), ('stim_right_name', 'stimuli/tunga_08.bmp'), ('correct', 0)]), OrderedDict([('kind', 2), ('position', 0), ('result', 1), ('stim_left', 3), ('stim_right', 12), ('stim_left_name', 'stimuli/tunga_03.bmp'), ('stim_right_name', 'stimuli/tunga_12.bmp'), ('correct', 0)]), OrderedDict([('kind', 1), ('position', 1), ('result', 1), ('stim_left', 4), ('stim_right', 5), ('stim_left_name', 'stimuli/tunga_04.bmp'), ('stim_right_name', 'stimuli/tunga_05.bmp'), ('correct', 1)]), OrderedDict([('kind', 0), ('position', 1), ('result', 1), ('stim_left', 8), ('stim_right', 6), ('stim_left_name', 'stimuli/tunga_08.bmp'), ('stim_right_name', 'stimuli/tunga_06.bmp'), ('correct', 1)]), OrderedDict([('kind', 2), ('position', 1), ('result', 1), ('stim_left', 12), ('stim_right', 3), ('stim_left_name', 'stimuli/tunga_12.bmp'), ('stim_right_name', 'stimuli/tunga_03.bmp'), ('correct', 1)]), OrderedDict([('kind', 2), ('position', 0), ('result', 1), ('stim_left', 3), ('stim_right', 12), ('stim_left_name', 'stimuli/tunga_03.bmp'), ('stim_right_name', 'stimuli/tunga_12.bmp'), ('correct', 0)]), OrderedDict([('kind', 1), ('position', 0), ('result', -1), ('stim_left', 5), ('stim_right', 4), ('stim_left_name', 'stimuli/tunga_05.bmp'), ('stim_right_name', 'stimuli/tunga_04.bmp'), ('correct', 1)]), OrderedDict([('kind', 0), ('position', 1), ('result', -1), ('stim_left', 8), ('stim_right', 6), ('stim_left_name', 'stimuli/tunga_08.bmp'), ('stim_right_name', 'stimuli/tunga_06.bmp'), ('correct', 0)]), OrderedDict([('kind', 0), ('position', 1), ('result', -1), ('stim_left', 8), ('stim_right', 6), ('stim_left_name', 'stimuli/tunga_08.bmp'), ('stim_right_name', 'stimuli/tunga_06.bmp'), ('correct', 0)]), OrderedDict([('kind', 2), ('position', 0), ('result', -1), ('stim_left', 3), ('stim_right', 12), ('stim_left_name', 'stimuli/tunga_03.bmp'), ('stim_right_name', 'stimuli/tunga_12.bmp'), ('correct', 1)]), OrderedDict([('kind', 0), ('position', 0), ('result', 1), ('stim_left', 6), ('stim_right', 8), ('stim_left_name', 'stimuli/tunga_06.bmp'), ('stim_right_name', 'stimuli/tunga_08.bmp'), ('correct', 0)]), OrderedDict([('kind', 1), ('position', 1), ('result', -1), ('stim_left', 4), ('stim_right', 5), ('stim_left_name', 'stimuli/tunga_04.bmp'), ('stim_right_name', 'stimuli/tunga_05.bmp'), ('correct', 0)]), OrderedDict([('kind', 2), ('position', 0), ('result', 1), ('stim_left', 3), ('stim_right', 12), ('stim_left_name', 'stimuli/tunga_03.bmp'), ('stim_right_name', 'stimuli/tunga_12.bmp'), ('correct', 0)]), OrderedDict([('kind', 1), ('position', 1), ('result', 1), ('stim_left', 4), ('stim_right', 5), ('stim_left_name', 'stimuli/tunga_04.bmp'), ('stim_right_name', 'stimuli/tunga_05.bmp'), ('correct', 1)]), OrderedDict([('kind', 0), ('position', 0), ('result', 1), ('stim_left', 6), ('stim_right', 8), ('stim_left_name', 'stimuli/tunga_06.bmp'), ('stim_right_name', 'stimuli/tunga_08.bmp'), ('correct', 0)]), OrderedDict([('kind', 1), ('position', 1), ('result', 1), ('stim_left', 4), ('stim_right', 5), ('stim_left_name', 'stimuli/tunga_04.bmp'), ('stim_right_name', 'stimuli/tunga_05.bmp'), ('correct', 1)]), OrderedDict([('kind', 2), ('position', 0), ('result', 1), ('stim_left', 3), ('stim_right', 12), ('stim_left_name', 'stimuli/tunga_03.bmp'), ('stim_right_name', 'stimuli/tunga_12.bmp'), ('correct', 0)]), OrderedDict([('kind', 0), ('position', 0), ('result', 1), ('stim_left', 6), ('stim_right', 8), ('stim_left_name', 'stimuli/tunga_06.bmp'), ('stim_right_name', 'stimuli/tunga_08.bmp'), ('correct', 0)]), OrderedDict([('kind', 2), ('position', 1), ('result', 1), ('stim_left', 12), ('stim_right', 3), ('stim_left_name', 'stimuli/tunga_12.bmp'), ('stim_right_name', 'stimuli/tunga_03.bmp'), ('correct', 1)]), OrderedDict([('kind', 0), ('position', 1), ('result', 1), ('stim_left', 8), ('stim_right', 6), ('stim_left_name', 'stimuli/tunga_08.bmp'), ('stim_right_name', 'stimuli/tunga_06.bmp'), ('correct', 1)]), OrderedDict([('kind', 0), ('position', 1), ('result', 1), ('stim_left', 8), ('stim_right', 6), ('stim_left_name', 'stimuli/tunga_08.bmp'), ('stim_right_name', 'stimuli/tunga_06.bmp'), ('correct', 1)]), OrderedDict([('kind', 0), ('position', 0), ('result', -1), ('stim_left', 6), ('stim_right', 8), ('stim_left_name', 'stimuli/tunga_06.bmp'), ('stim_right_name', 'stimuli/tunga_08.bmp'), ('correct', 1)]), OrderedDict([('kind', 1), ('position', 1), ('result', -1), ('stim_left', 4), ('stim_right', 5), ('stim_left_name', 'stimuli/tunga_04.bmp'), ('stim_right_name', 'stimuli/tunga_05.bmp'), ('correct', 0)]), OrderedDict([('kind', 2), ('position', 1), ('result', -1), ('stim_left', 12), ('stim_right', 3), ('stim_left_name', 'stimuli/tunga_12.bmp'), ('stim_right_name', 'stimuli/tunga_03.bmp'), ('correct', 0)]), OrderedDict([('kind', 0), ('position', 0), ('result', -1), ('stim_left', 6), ('stim_right', 8), ('stim_left_name', 'stimuli/tunga_06.bmp'), ('stim_right_name', 'stimuli/tunga_08.bmp'), ('correct', 1)]), OrderedDict([('kind', 2), ('position', 1), ('result', 1), ('stim_left', 12), ('stim_right', 3), ('stim_left_name', 'stimuli/tunga_12.bmp'), ('stim_right_name', 'stimuli/tunga_03.bmp'), ('correct', 1)]), OrderedDict([('kind', 1), ('position', 1), ('result', 1), ('stim_left', 4), ('stim_right', 5), ('stim_left_name', 'stimuli/tunga_04.bmp'), ('stim_right_name', 'stimuli/tunga_05.bmp'), ('correct', 1)]), OrderedDict([('kind', 1), ('position', 0), ('result', 1), ('stim_left', 5), ('stim_right', 4), ('stim_left_name', 'stimuli/tunga_05.bmp'), ('stim_right_name', 'stimuli/tunga_04.bmp'), ('correct', 0)]), OrderedDict([('kind', 1), ('position', 1), ('result', 1), ('stim_left', 4), ('stim_right', 5), ('stim_left_name', 'stimuli/tunga_04.bmp'), ('stim_right_name', 'stimuli/tunga_05.bmp'), ('correct', 1)]), OrderedDict([('kind', 1), ('position', 0), ('result', 1), ('stim_left', 5), ('stim_right', 4), ('stim_left_name', 'stimuli/tunga_05.bmp'), ('stim_right_name', 'stimuli/tunga_04.bmp'), ('correct', 0)]), OrderedDict([('kind', 2), ('position', 1), ('result', 1), ('stim_left', 12), ('stim_right', 3), ('stim_left_name', 'stimuli/tunga_12.bmp'), ('stim_right_name', 'stimuli/tunga_03.bmp'), ('correct', 1)]), OrderedDict([('kind', 1), ('position', 1), ('result', 1), ('stim_left', 4), ('stim_right', 5), ('stim_left_name', 'stimuli/tunga_04.bmp'), ('stim_right_name', 'stimuli/tunga_05.bmp'), ('correct', 1)]), OrderedDict([('kind', 1), ('position', 1), ('result', 1), ('stim_left', 4), ('stim_right', 5), ('stim_left_name', 'stimuli/tunga_04.bmp'), ('stim_right_name', 'stimuli/tunga_05.bmp'), ('correct', 1)]), OrderedDict([('kind', 1), ('position', 0), ('result', 1), ('stim_left', 5), ('stim_right', 4), ('stim_left_name', 'stimuli/tunga_05.bmp'), ('stim_right_name', 'stimuli/tunga_04.bmp'), ('correct', 0)]), OrderedDict([('kind', 0), ('position', 1), ('result', 1), ('stim_left', 8), ('stim_right', 6), ('stim_left_name', 'stimuli/tunga_08.bmp'), ('stim_right_name', 'stimuli/tunga_06.bmp'), ('correct', 1)]), OrderedDict([('kind', 2), ('position', 0), ('result', -1), ('stim_left', 3), ('stim_right', 12), ('stim_left_name', 'stimuli/tunga_03.bmp'), ('stim_right_name', 'stimuli/tunga_12.bmp'), ('correct', 1)]), OrderedDict([('kind', 1), ('position', 1), ('result', 1), ('stim_left', 4), ('stim_right', 5), ('stim_left_name', 'stimuli/tunga_04.bmp'), ('stim_right_name', 'stimuli/tunga_05.bmp'), ('correct', 1)]), OrderedDict([('kind', 2), ('position', 0), ('result', 1), ('stim_left', 3), ('stim_right', 12), ('stim_left_name', 'stimuli/tunga_03.bmp'), ('stim_right_name', 'stimuli/tunga_12.bmp'), ('correct', 0)]), OrderedDict([('kind', 0), ('position', 0), ('result', 1), ('stim_left', 6), ('stim_right', 8), ('stim_left_name', 'stimuli/tunga_06.bmp'), ('stim_right_name', 'stimuli/tunga_08.bmp'), ('correct', 0)]), OrderedDict([('kind', 1), ('position', 1), ('result', 1), ('stim_left', 4), ('stim_right', 5), ('stim_left_name', 'stimuli/tunga_04.bmp'), ('stim_right_name', 'stimuli/tunga_05.bmp'), ('correct', 1)]), OrderedDict([('kind', 1), ('position', 0), ('result', -1), ('stim_left', 5), ('stim_right', 4), ('stim_left_name', 'stimuli/tunga_05.bmp'), ('stim_right_name', 'stimuli/tunga_04.bmp'), ('correct', 1)]), OrderedDict([('kind', 2), ('position', 0), ('result', 1), ('stim_left', 3), ('stim_right', 12), ('stim_left_name', 'stimuli/tunga_03.bmp'), ('stim_right_name', 'stimuli/tunga_12.bmp'), ('correct', 0)]), OrderedDict([('kind', 1), ('position', 0), ('result', 1), ('stim_left', 5), ('stim_right', 4), ('stim_left_name', 'stimuli/tunga_05.bmp'), ('stim_right_name', 'stimuli/tunga_04.bmp'), ('correct', 0)]), OrderedDict([('kind', 2), ('position', 0), ('result', 1), ('stim_left', 3), ('stim_right', 12), ('stim_left_name', 'stimuli/tunga_03.bmp'), ('stim_right_name', 'stimuli/tunga_12.bmp'), ('correct', 0)]), OrderedDict([('kind', 1), ('position', 1), ('result', 1), ('stim_left', 4), ('stim_right', 5), ('stim_left_name', 'stimuli/tunga_04.bmp'), ('stim_right_name', 'stimuli/tunga_05.bmp'), ('correct', 1)]), OrderedDict([('kind', 2), ('position', 1), ('result', -1), ('stim_left', 12), ('stim_right', 3), ('stim_left_name', 'stimuli/tunga_12.bmp'), ('stim_right_name', 'stimuli/tunga_03.bmp'), ('correct', 0)]), OrderedDict([('kind', 0), ('position', 0), ('result', 1), ('stim_left', 6), ('stim_right', 8), ('stim_left_name', 'stimuli/tunga_06.bmp'), ('stim_right_name', 'stimuli/tunga_08.bmp'), ('correct', 0)]), OrderedDict([('kind', 0), ('position', 0), ('result', 1), ('stim_left', 6), ('stim_right', 8), ('stim_left_name', 'stimuli/tunga_06.bmp'), ('stim_right_name', 'stimuli/tunga_08.bmp'), ('correct', 0)]), OrderedDict([('kind', 0), ('position', 0), ('result', 1), ('stim_left', 6), ('stim_right', 8), ('stim_left_name', 'stimuli/tunga_06.bmp'), ('stim_right_name', 'stimuli/tunga_08.bmp'), ('correct', 0)]), OrderedDict([('kind', 0), ('position', 0), ('result', 1), ('stim_left', 6), ('stim_right', 8), ('stim_left_name', 'stimuli/tunga_06.bmp'), ('stim_right_name', 'stimuli/tunga_08.bmp'), ('correct', 0)]), OrderedDict([('kind', 1), ('position', 1), ('result', 1), ('stim_left', 4), ('stim_right', 5), ('stim_left_name', 'stimuli/tunga_04.bmp'), ('stim_right_name', 'stimuli/tunga_05.bmp'), ('correct', 1)]), OrderedDict([('kind', 2), ('position', 0), ('result', 1), ('stim_left', 3), ('stim_right', 12), ('stim_left_name', 'stimuli/tunga_03.bmp'), ('stim_right_name', 'stimuli/tunga_12.bmp'), ('correct', 0)]), OrderedDict([('kind', 2), ('position', 1), ('result', 1), ('stim_left', 12), ('stim_right', 3), ('stim_left_name', 'stimuli/tunga_12.bmp'), ('stim_right_name', 'stimuli/tunga_03.bmp'), ('correct', 1)]), OrderedDict([('kind', 2), ('position', 1), ('result', 1), ('stim_left', 12), ('stim_right', 3), ('stim_left_name', 'stimuli/tunga_12.bmp'), ('stim_right_name', 'stimuli/tunga_03.bmp'), ('correct', 1)]), OrderedDict([('kind', 1), ('position', 1), ('result', 1), ('stim_left', 4), ('stim_right', 5), ('stim_left_name', 'stimuli/tunga_04.bmp'), ('stim_right_name', 'stimuli/tunga_05.bmp'), ('correct', 1)]), OrderedDict([('kind', 0), ('position', 1), ('result', 1), ('stim_left', 8), ('stim_right', 6), ('stim_left_name', 'stimuli/tunga_08.bmp'), ('stim_right_name', 'stimuli/tunga_06.bmp'), ('correct', 1)]), OrderedDict([('kind', 0), ('position', 0), ('result', -1), ('stim_left', 6), ('stim_right', 8), ('stim_left_name', 'stimuli/tunga_06.bmp'), ('stim_right_name', 'stimuli/tunga_08.bmp'), ('correct', 1)]), OrderedDict([('kind', 1), ('position', 0), ('result', 1), ('stim_left', 5), ('stim_right', 4), ('stim_left_name', 'stimuli/tunga_05.bmp'), ('stim_right_name', 'stimuli/tunga_04.bmp'), ('correct', 0)]), OrderedDict([('kind', 2), ('position', 0), ('result', 1), ('stim_left', 3), ('stim_right', 12), ('stim_left_name', 'stimuli/tunga_03.bmp'), ('stim_right_name', 'stimuli/tunga_12.bmp'), ('correct', 0)]), OrderedDict([('kind', 0), ('position', 0), ('result', 1), ('stim_left', 6), ('stim_right', 8), ('stim_left_name', 'stimuli/tunga_06.bmp'), ('stim_right_name', 'stimuli/tunga_08.bmp'), ('correct', 0)]), OrderedDict([('kind', 0), ('position', 1), ('result', 1), ('stim_left', 8), ('stim_right', 6), ('stim_left_name', 'stimuli/tunga_08.bmp'), ('stim_right_name', 'stimuli/tunga_06.bmp'), ('correct', 1)]), OrderedDict([('kind', 2), ('position', 1), ('result', 1), ('stim_left', 12), ('stim_right', 3), ('stim_left_name', 'stimuli/tunga_12.bmp'), ('stim_right_name', 'stimuli/tunga_03.bmp'), ('correct', 1)]), OrderedDict([('kind', 1), ('position', 0), ('result', 1), ('stim_left', 5), ('stim_right', 4), ('stim_left_name', 'stimuli/tunga_05.bmp'), ('stim_right_name', 'stimuli/tunga_04.bmp'), ('correct', 0)]), OrderedDict([('kind', 1), ('position', 0), ('result', 1), ('stim_left', 5), ('stim_right', 4), ('stim_left_name', 'stimuli/tunga_05.bmp'), ('stim_right_name', 'stimuli/tunga_04.bmp'), ('correct', 0)]), OrderedDict([('kind', 1), ('position', 0), ('result', 1), ('stim_left', 5), ('stim_right', 4), ('stim_left_name', 'stimuli/tunga_05.bmp'), ('stim_right_name', 'stimuli/tunga_04.bmp'), ('correct', 0)]), OrderedDict([('kind', 2), ('position', 1), ('result', 1), ('stim_left', 12), ('stim_right', 3), ('stim_left_name', 'stimuli/tunga_12.bmp'), ('stim_right_name', 'stimuli/tunga_03.bmp'), ('correct', 1)]), OrderedDict([('kind', 2), ('position', 1), ('result', -1), ('stim_left', 12), ('stim_right', 3), ('stim_left_name', 'stimuli/tunga_12.bmp'), ('stim_right_name', 'stimuli/tunga_03.bmp'), ('correct', 0)]), OrderedDict([('kind', 2), ('position', 1), ('result', 1), ('stim_left', 12), ('stim_right', 3), ('stim_left_name', 'stimuli/tunga_12.bmp'), ('stim_right_name', 'stimuli/tunga_03.bmp'), ('correct', 1)]), OrderedDict([('kind', 0), ('position', 0), ('result', 1), ('stim_left', 6), ('stim_right', 8), ('stim_left_name', 'stimuli/tunga_06.bmp'), ('stim_right_name', 'stimuli/tunga_08.bmp'), ('correct', 0)]), OrderedDict([('kind', 0), ('position', 0), ('result', 1), ('stim_left', 6), ('stim_right', 8), ('stim_left_name', 'stimuli/tunga_06.bmp'), ('stim_right_name', 'stimuli/tunga_08.bmp'), ('correct', 0)]), OrderedDict([('kind', 2), ('position', 1), ('result', 1), ('stim_left', 12), ('stim_right', 3), ('stim_left_name', 'stimuli/tunga_12.bmp'), ('stim_right_name', 'stimuli/tunga_03.bmp'), ('correct', 1)]), OrderedDict([('kind', 0), ('position', 1), ('result', 1), ('stim_left', 8), ('stim_right', 6), ('stim_left_name', 'stimuli/tunga_08.bmp'), ('stim_right_name', 'stimuli/tunga_06.bmp'), ('correct', 1)])]" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="orders/scanner/order000.csv" valType="str"/>
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
       <Param name="loopType" updates="None" val="random" valType="str"/>
-      <Param name="nReps" updates="None" val="10" valType="code"/>
+      <Param name="nReps" updates="None" val="1" valType="code"/>
       <Param name="name" updates="None" val="trials" valType="code"/>
       <Param name="random seed" updates="None" val="" valType="code"/>
     </LoopInitiator>

@@ -1,23 +1,27 @@
 # Reinforcement Learning task
 
-Task originally described in [Harrison et al. (2016) A Neurocomputational Account of How Inflammation Enhances Sensitivity to Punishments Versus Rewards.](https://dx.doi.org/10.1016%2Fj.biopsych.2015.07.018)
+Task originally described in [Harrison et al. (2016) A Neurocomputational Account of How Inflammation Enhances Sensitivity to Punishments Versus Rewards.](https://dx.doi.org/10.1016%2Fj.biopsych.2015.07.018).
 
-Psychopy Builder version of task ported from original Matlab by Dan Fitch <dfitch@wisc.edu>
+Psychopy Builder version of task ported from original Matlab by Dan Fitch <dfitch@wisc.edu>.
+
+# Features
+
+* Psuedorandom seeding based on participant and session number
 
 # TODO
 
-* Feedback circle
-* Feedback screen
-* Button box?
-* Sim how?
-* Pseudorandom seeding, and loading an order like MST
-* Multi sessions to prevent overlap of symbols
+* Button box? Go/no go and feedback changes? (Display circle at keypress? "The choice was then circled in red and the outcome displayed on the screen after a 4-second delay.")
+* Sim version?
+* Analysis: Do I need to worry about the Bayesian stuff, or the reinforcement-learning model they did? They provided no analysis code to us.
+* Multiple sessions, do we try to prevent overlap of symbols? Sim is separate stimuli pool... We have 24 total stimuli.
+* What about Kannadigas or people who can read the script? There's 44 million native speakers...
 
 ## Differences from original task
 
-Runs of non-default length still use intended 80% predictability,
+* BUGFIX: Runs of non-default length still use intended 80% predictability,
 instead of skewing more toward completely random the shorter the trials
-and toward 100% the longer the session goes.
+and toward 100% the longer the session goes. (In the shorter simulation runs, 
+the Matlab task is more random than intended.)
 
 ## Credits
 

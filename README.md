@@ -12,7 +12,7 @@ Psychopy Builder version of task ported from original Matlab by Dan Fitch <dfitc
 
 * Button box? Go/no go and feedback changes? (Display circle at keypress? "The choice was then circled in red and the outcome displayed on the screen after a 4-second delay.")
 * Sim version?
-* Analysis: Do I need to worry about the Bayesian stuff, or the reinforcement-learning model they did? They provided no analysis code to us.
+* Analysis: Do we need to worry about the Bayesian stuff, or the reinforcement-learning model they did? They provided no analysis code to us.
 * Multiple sessions, do we try to prevent overlap of symbols? Sim is separate stimuli pool... We have 24 total stimuli.
 * What about Kannadigas or people who can read the script? There's 44 million native speakers...
 
@@ -54,3 +54,6 @@ use knowledge of image responses from previous session. For BIODEP, this
 is already enforced in the two different codes, 'PC' and 'scanner'.
 
 
+# License
+
+This code is copyright 2019 the UW-Madison Board of Regents, and released under the MIT license.

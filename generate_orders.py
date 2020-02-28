@@ -59,18 +59,18 @@ def build_order(trials, for_sim=False):
             stim_left_name.append(this_stim_names[0])
             stim_right_name.append(this_stim_names[1])
             if this_result > 0:
-                correct.append('space')
+                correct.append('left')
             else:
-                correct.append('')
+                correct.append('right')
         else:
             stim_left.append(this_stims[1])
             stim_right.append(this_stims[0])
             stim_left_name.append(this_stim_names[1])
             stim_right_name.append(this_stim_names[0])
             if this_result > 0:
-                correct.append('')
+                correct.append('right')
             else:
-                correct.append('space')
+                correct.append('left')
     
     return pd.DataFrame({
         'kind': kind,

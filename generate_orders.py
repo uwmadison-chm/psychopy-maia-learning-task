@@ -3,7 +3,7 @@
 import numpy as np
 import pandas as pd
 
-def build_order(trials, for_sim=False):
+def build_order(trials, offset=0, length=8):
     def semirand(length, how_many):
         s = np.mod(np.arange(length), how_many)
         np.random.shuffle(s)
@@ -22,22 +22,21 @@ def build_order(trials, for_sim=False):
     # Each kind gets a pair of (different) correct and incorrect stimuli
     # We keep simulation run stimuli different from actual run by adding 12.
     stim_start = 1
-    if for_sim:
-        stim_start += 12
-    stim_nums = list(range(stim_start, stim_start + 12))
+    stim_start += offset
+    stim_nums = list(range(stim_start, stim_start + length))
     np.random.shuffle(stim_nums)
     stim_names = [f"stimuli/tunga_{x:02}.bmp" for x in stim_nums]
 
     # Now pick stimuli pairs
     nums = [
         stim_nums[0:2],
-        stim_nums[3:5],
-        stim_nums[6:8],
+        stim_nums[2:4],
+        stim_nums[4:6],
     ]
     names = [
         stim_names[0:2],
-        stim_names[3:5],
-        stim_names[6:8],
+        stim_names[2:4],
+        stim_names[4:6],
     ]
 
     # Insert stimuli, iterating over the trials
@@ -83,11 +82,8 @@ def build_order(trials, for_sim=False):
         'correctAns': correct,
         })
 
-for i in range(100):
-    order = build_order(72, for_sim=False)
-    order.to_csv(f"orders/scanner/order{i:03d}.csv", index=False)
 
-
-for i in range(100):
-    order = build_order(36, for_sim=True)
-    order.to_csv(f"orders/sim/order{i:03d}.csv", index=False)
+for session in range(3):
+    for i in range(100):
+        order = build_order(72, offset=session)
+        order.to_csv(f"orders/session{session + 1}/order{i:03d}.csv", index=False)

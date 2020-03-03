@@ -64,7 +64,7 @@
         <Param name="forceEndRoutineOnPress" updates="constant" val="any click" valType="str"/>
         <Param name="name" updates="None" val="mouse" valType="code"/>
         <Param name="newClicksOnly" updates="constant" val="True" valType="bool"/>
-        <Param name="saveMouseState" updates="None" val="final" valType="str"/>
+        <Param name="saveMouseState" updates="None" val="never" valType="str"/>
         <Param name="saveParamsClickable" updates="constant" val="name," valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
@@ -100,7 +100,7 @@
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
       </TextComponent>
       <CodeComponent name="startup_code">
-        <Param name="Begin Experiment" updates="constant" val="seed = int(expInfo['randomization'])&amp;#10;&amp;#10;if seed == -1:&amp;#10;    seed = int(expInfo['participant'])&amp;#10;&amp;#10;np.random.seed(seed)&amp;#10;import random&amp;#10;random.seed(seed)&amp;#10;&amp;#10;order_num = int(random.random() * 100)&amp;#10;order = f&quot;{order_num:03}&quot;&amp;#10;order_file = f&quot;orders/session{expInfo['session']}/order{order}.csv&quot;&amp;#10;&amp;#10;from psychopy import logging&amp;#10;logging.log(level=logging.EXP, msg=(f'Order chosen: {order_num}'))&amp;#10;logging.log(level=logging.EXP, msg=(f'Order loaded from file: {order_file}'))&amp;#10;logging.flush()&amp;#10;&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="# The only way to win... is to play the game, actually&amp;#10;cash_money = 0&amp;#10;&amp;#10;seed = int(expInfo['randomization'])&amp;#10;&amp;#10;if seed == -1:&amp;#10;    seed = int(expInfo['participant'])&amp;#10;&amp;#10;np.random.seed(seed)&amp;#10;import random&amp;#10;random.seed(seed)&amp;#10;&amp;#10;order_num = int(random.random() * 100)&amp;#10;order = f&quot;{order_num:03}&quot;&amp;#10;order_file = f&quot;orders/session{expInfo['session']}/order{order}.csv&quot;&amp;#10;&amp;#10;from psychopy import logging&amp;#10;logging.log(level=logging.EXP, msg=(f'Order chosen: {order_num}'))&amp;#10;logging.log(level=logging.EXP, msg=(f'Order loaded from file: {order_file}'))&amp;#10;logging.flush()&amp;#10;&amp;#10;" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="/* Syntax Error: Fix Python code */" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
@@ -216,7 +216,7 @@
         <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="if key_resp.keys == 'left':&amp;#10;    circlePos = (-0.4, 0)&amp;#10;else:&amp;#10;    circlePos = (0.4, 0)&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="if key_resp.keys == 'left':&amp;#10;    circlePos = (-0.4, 0)&amp;#10;elif key_resp.keys == 'right':&amp;#10;    circlePos = (0.4, 0)&amp;#10;else:&amp;#10;    # Offscreen&amp;#10;    circlePos = (0.0, 4.0)" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
@@ -335,7 +335,7 @@
         <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="if key_resp.corr:&amp;#10;    dollarOpacity = 1;&amp;#10;    if kind == 0:&amp;#10;        text = &quot;gain&quot;&amp;#10;    elif kind == 1:&amp;#10;        text = &quot;lose&quot;&amp;#10;    else:&amp;#10;        text = &quot;look&quot;&amp;#10;else:&amp;#10;    dollarOpacity = 0;&amp;#10;    text = &quot;nothing&quot;&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="if key_resp.corr:&amp;#10;    dollarOpacity = 1&amp;#10;    if kind == 0:&amp;#10;        text = &quot;gain&quot;&amp;#10;        cash_money += 1&amp;#10;    elif kind == 1:&amp;#10;        text = &quot;lose&quot;&amp;#10;        cash_money -= 1&amp;#10;    else:&amp;#10;        text = &quot;look&quot;&amp;#10;else:&amp;#10;    dollarOpacity = 0&amp;#10;    text = &quot;nothing&quot;&amp;#10;" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
@@ -396,6 +396,89 @@
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
       </ImageComponent>
     </Routine>
+    <Routine name="ender">
+      <CodeComponent name="code_3">
+        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="import {logging} from 'psychopy';&amp;#10;var end_result;&amp;#10;if ((cash_money &gt; 0)) {&amp;#10;    end_result = `You won $${cash_money}!`;&amp;#10;} else {&amp;#10;    end_result = &quot;&quot;;&amp;#10;}&amp;#10;logging.log({&quot;level&quot;: logging.WARN, &quot;msg&quot;: `Participant wins: $${cash_money}`});&amp;#10;logging.flush();&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="if cash_money &gt; 0:&amp;#10;    end_result = f&quot;You won ${cash_money}!&quot;&amp;#10;else:&amp;#10;    end_result = &quot;&quot;&amp;#10;    &amp;#10;from psychopy import logging&amp;#10;logging.log(level=logging.WARN, msg=(f'Participant wins: ${cash_money}'))&amp;#10;logging.flush() &amp;#10;" valType="extendedCode"/>
+        <Param name="Code Type" updates="None" val="Auto-&gt;JS" valType="str"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="code_3" valType="code"/>
+      </CodeComponent>
+      <TextComponent name="end_heading">
+        <Param name="color" updates="constant" val="yellow" valType="str"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="flip" updates="constant" val="" valType="str"/>
+        <Param name="font" updates="constant" val="Arial" valType="str"/>
+        <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
+        <Param name="letterHeight" updates="constant" val="0.075" valType="code"/>
+        <Param name="name" updates="None" val="end_heading" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="pos" updates="constant" val="(0, 0.4)" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="text" updates="constant" val="Experiment complete" valType="str"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+      </TextComponent>
+      <TextComponent name="end_text">
+        <Param name="color" updates="constant" val="white" valType="str"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="flip" updates="constant" val="" valType="str"/>
+        <Param name="font" updates="constant" val="Arial" valType="str"/>
+        <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
+        <Param name="letterHeight" updates="constant" val="0.05" valType="code"/>
+        <Param name="name" updates="None" val="end_text" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="text" updates="set every repeat" val="$end_result" valType="str"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+      </TextComponent>
+      <MouseComponent name="mouse_end">
+        <Param name="clickable" updates="constant" val="" valType="code"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="forceEndRoutineOnPress" updates="constant" val="any click" valType="str"/>
+        <Param name="name" updates="None" val="mouse_end" valType="code"/>
+        <Param name="newClicksOnly" updates="constant" val="True" valType="bool"/>
+        <Param name="saveMouseState" updates="None" val="never" valType="str"/>
+        <Param name="saveParamsClickable" updates="constant" val="name," valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="False" valType="bool"/>
+        <Param name="timeRelativeTo" updates="constant" val="mouse onset" valType="str"/>
+      </MouseComponent>
+    </Routine>
   </Routines>
   <Flow>
     <Routine name="instr"/>
@@ -405,7 +488,7 @@
       <Param name="conditionsFile" updates="None" val="$order_file" valType="str"/>
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
-      <Param name="loopType" updates="None" val="random" valType="str"/>
+      <Param name="loopType" updates="None" val="sequential" valType="str"/>
       <Param name="nReps" updates="None" val="1" valType="code"/>
       <Param name="name" updates="None" val="trials" valType="code"/>
       <Param name="random seed" updates="None" val="" valType="code"/>
@@ -416,5 +499,6 @@
     <Routine name="stimuli_feedback"/>
     <Routine name="feedback"/>
     <LoopTerminator name="trials"/>
+    <Routine name="ender"/>
   </Flow>
 </PsychoPy2experiment>
